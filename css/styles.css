@@ -1,0 +1,775 @@
+:root {
+  /* Background */
+  --Main-background: #F4F6F8;
+  --Navbar: #FFFFFF;
+  --Sidebar: #FFFFFF;
+
+  /* Cards & Containers */
+  --Card: #FFFFFF;
+  --Card-hover: #EBF7EE;
+
+  /* Borders & Frames */
+  --Border: #DCE3E8;
+  --Border-subtle: #EAEFF3;
+
+  /* Typography */
+  --Heading: #1E293B;
+  --Body-text: #334155;
+  --Secondary-text: #64748B;
+  --Placeholder: #94A3B8;
+
+  /* Icons */
+  --Icon: #64748B;
+  --Icon-active: #16A34A;
+
+  /* Brand & Accent */
+  --Accent: #16A34A;
+  --Accent-hover: #15803D;
+  --Accent-subtle: #DCFCE7;
+  --Accent-text: #FFFFFF;
+  --Accent-gold: #F59E0B;
+
+  /* Buttons */
+  --Button-background: #22C55E;
+  --Button-background-active: #15803D;
+  --Button-text: #FFFFFF;
+  --Button-hover: #16A34A;
+
+  /* Secondary / Outline Buttons (seperti tombol "Masuk" & "VERSI WAP") */
+  --Button-secondary-bg: #FFFFFF;
+  --Button-secondary-hover: #F1F5F9;
+  --Button-secondary-text: #475569;
+  --Button-secondary-border: #CBD5E1;
+
+  /* Inputs */
+  --Input-background: #FFFFFF;
+  --Input-border: #CBD5E1;
+  --Input-border-focus: #22C55E;
+
+  /* Status */
+  --Status-online: #22C55E;
+  --Status-warning: #F59E0B;
+  --Status-danger: #EF4444;
+
+  /* Radius & Gradients */
+  --radius: 8px;
+  --Brand-gradient: linear-gradient(135deg, var(--Accent) 0%, #4ADE80 100%);
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    max-width: 100%;
+    overflow-x: clip;
+}
+
+body {
+    margin: 0;
+    background: var(--Main-background);
+    color: var(--Body-text);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.5;
+}
+
+.container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 1rem;
+    display: grid;
+    gap: 1rem;
+}
+
+.card {
+    background: var(--Card);
+    border: 1px solid var(--Border);
+    border-radius: var(--radius);
+    padding: 1.15rem;
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+}
+
+.container,
+.card,
+.section-block,
+.meta-info-list,
+.meta-row,
+.header-meta,
+.rating-summary,
+.rating-bars,
+.reviewer-info > div {
+    min-width: 0;
+}
+
+/* 1. Header Aplikasi */
+.app-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.card.brand-logo {
+    flex-shrink: 0;
+    width: 80px;
+    height: 80px;
+    padding: 8px;
+    background: var(--Brand-gradient);
+    border: 1px solid var(--Accent);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.brand-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+.header-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    min-width: 0;
+}
+
+.header-title {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.header-title h1 {
+    margin: 0;
+    font-size: clamp(1.2rem, 2.4vw, 1.6rem);
+    line-height: 1.2;
+    color: var(--Heading);
+}
+
+.icon-badge {
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.developer-link {
+    width: fit-content;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--Accent-hover);
+    text-decoration: none;
+}
+
+.developer-link:hover {
+    text-decoration: underline;
+}
+
+.verified-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.85rem;
+    color: var(--Secondary-text);
+}
+
+.icon-shield {
+    width: 15px;
+    height: 15px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.top-brand-trigger {
+    margin-top: 0.25rem;
+    width: fit-content;
+    max-width: 100%;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.25rem 0.6rem;
+    border-radius: 999px;
+    border: 1px solid #FDE68A;
+    background: #FFFBEB;
+    color: #92400E;
+    font-size: 0.78rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.top-brand-trigger:hover {
+    background: #FEF3C7;
+    border-color: var(--Accent-gold);
+}
+
+.top-brand-star {
+    color: var(--Accent-gold);
+    font-size: 0.85rem;
+}
+
+/* 2. Statistik Singkat & Tombol Unduh */
+.stats-card {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.stats-row {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr;
+    align-items: center;
+    gap: 0.5rem;
+    text-align: center;
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.15rem;
+    padding: 0.25rem;
+    min-width: 0;
+}
+
+.stat-value {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.2rem;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--Heading);
+}
+
+.star-icon {
+    color: var(--Accent-gold);
+    font-size: 0.9rem;
+}
+
+.age-badge {
+    display: inline-block;
+    padding: 0.05rem 0.35rem;
+    border: 1.5px solid var(--Heading);
+    border-radius: 4px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.stat-label {
+    font-size: 0.76rem;
+    color: var(--Secondary-text);
+}
+
+.stat-divider {
+    width: 1px;
+    height: 28px;
+    background: var(--Border-subtle);
+}
+
+.action-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.secondary-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.6rem;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.72rem 1rem;
+    border-radius: var(--radius);
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.15s ease, border-color 0.15s ease, transform 0.1s ease;
+}
+
+.btn:active {
+    transform: scale(0.99);
+}
+
+.btn-primary {
+    width: 100%;
+    border: none;
+    background: var(--Button-background);
+    color: var(--Button-text);
+}
+
+.btn-primary:hover {
+    background: var(--Button-hover);
+}
+
+.btn-primary:active {
+    background: var(--Button-background-active);
+}
+
+.btn-secondary {
+    background: var(--Button-secondary-bg);
+    color: var(--Button-secondary-text);
+    border: 1px solid var(--Button-secondary-border);
+}
+
+.btn-secondary:hover {
+    background: var(--Button-secondary-hover);
+    color: var(--Heading);
+}
+
+.install-note {
+    font-size: 0.82rem;
+    color: var(--Secondary-text);
+    text-align: center;
+}
+
+/* 3 & 4. Bagian Konten, Screenshot & Ringkasan */
+.section-block {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+}
+
+.section-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.5rem;
+}
+
+.section-header h2 {
+    margin: 0;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--Heading);
+}
+
+.section-sub {
+    font-size: 0.8rem;
+    color: var(--Secondary-text);
+}
+
+.screenshots-track {
+    display: flex;
+    gap: 0.75rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 0.35rem;
+}
+
+.screenshot-item {
+    flex: 0 0 165px;
+    aspect-ratio: 9 / 16;
+    border-radius: var(--radius);
+    border: 1px solid var(--Border);
+    background: var(--Main-background);
+    overflow: hidden;
+    scroll-snap-align: start;
+}
+
+.screenshot-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.about-text {
+    margin: 0;
+    font-size: 0.92rem;
+    color: var(--Body-text);
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+
+.meta-info-list {
+    display: grid;
+    gap: 0.45rem;
+    padding-top: 0.55rem;
+    border-top: 1px solid var(--Border-subtle);
+}
+
+.meta-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.75rem;
+    font-size: 0.86rem;
+}
+
+.meta-row span {
+    color: var(--Secondary-text);
+    flex-shrink: 0;
+}
+
+.meta-row strong {
+    color: var(--Heading);
+    font-weight: 600;
+    text-align: right;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+
+.chip-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+}
+
+.chip {
+    padding: 0.3rem 0.65rem;
+    border-radius: 999px;
+    background: var(--Accent-subtle);
+    color: var(--Accent-hover);
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+/* 5. Ringkasan Rating & Ulasan */
+.rating-summary {
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    gap: 1rem;
+    align-items: center;
+    padding-bottom: 0.65rem;
+    border-bottom: 1px solid var(--Border-subtle);
+}
+
+.rating-score-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.15rem;
+}
+
+.rating-big {
+    font-size: 2.35rem;
+    font-weight: 700;
+    line-height: 1.05;
+    color: var(--Heading);
+}
+
+.rating-stars {
+    color: var(--Accent-gold);
+    font-size: 0.95rem;
+    letter-spacing: 0.08em;
+}
+
+.rating-total {
+    font-size: 0.78rem;
+    color: var(--Secondary-text);
+}
+
+.rating-bars {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.rating-bar-row {
+    display: grid;
+    grid-template-columns: 14px 1fr;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--Secondary-text);
+}
+
+.bar-track {
+    width: 100%;
+    height: 8px;
+    border-radius: 999px;
+    background: var(--Main-background);
+    overflow: hidden;
+}
+
+.bar-fill {
+    height: 100%;
+    border-radius: 999px;
+    background: var(--Accent);
+}
+
+.reviews-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+}
+
+.review-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+    padding-bottom: 0.9rem;
+    border-bottom: 1px solid var(--Border-subtle);
+}
+
+.review-item:last-child {
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.review-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+}
+
+.reviewer-info {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+}
+
+.reviewer-avatar {
+    width: 34px;
+    height: 34px;
+    border-radius: 999px;
+    background: var(--Accent-subtle);
+    color: var(--Accent-hover);
+    font-size: 0.9rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.reviewer-name {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--Heading);
+    line-height: 1.25;
+}
+
+.review-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-size: 0.78rem;
+    color: var(--Secondary-text);
+    margin-top: 0.1rem;
+}
+
+.review-stars {
+    color: var(--Accent-gold);
+    font-size: 0.8rem;
+    letter-spacing: 0.04em;
+}
+
+.review-body {
+    margin: 0;
+    font-size: 0.88rem;
+    color: var(--Body-text);
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+
+/* 6. Modal / Popup Top Brand */
+.modal-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    background: rgba(15, 23, 42, 0.55);
+}
+
+.modal-backdrop[hidden] {
+    display: none;
+}
+
+.card.modal-dialog {
+    position: relative;
+    z-index: 1000;
+    width: 100%;
+    max-width: 440px;
+    max-height: 90dvh;
+    overflow-y: auto;
+    padding: 1.35rem;
+    border-radius: 14px;
+    box-shadow: 0 18px 40px rgba(15, 23, 42, 0.22);
+}
+
+.modal-close {
+    position: absolute;
+    top: 0.85rem;
+    right: 0.85rem;
+    width: 32px;
+    height: 32px;
+    border: 1px solid var(--Border);
+    border-radius: 999px;
+    background: var(--Button-secondary-bg);
+    color: var(--Secondary-text);
+    font-size: 1.2rem;
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.modal-close:hover {
+    background: var(--Button-secondary-hover);
+    color: var(--Heading);
+}
+
+.modal-badge-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.modal-badge-img {
+    height: 28px;
+    width: auto;
+    max-width: 140px;
+    object-fit: contain;
+    display: block;
+}
+
+.modal-rating {
+    padding: 0.2rem 0.55rem;
+    border-radius: 999px;
+    background: #FFFBEB;
+    border: 1px solid #FDE68A;
+    color: #92400E;
+    font-size: 0.76rem;
+    font-weight: 700;
+}
+
+.modal-brand-header {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    margin-bottom: 0.85rem;
+}
+
+.card.brand-logo.modal-logo {
+    width: 58px;
+    height: 58px;
+    border-radius: 12px;
+    padding: 6px;
+}
+
+.modal-brand-header h2 {
+    margin: 0;
+    font-size: 1.08rem;
+    line-height: 1.3;
+    color: var(--Heading);
+}
+
+.modal-subtitle {
+    margin: 0.2rem 0 0;
+    font-size: 0.82rem;
+    color: var(--Secondary-text);
+}
+
+.modal-desc {
+    margin: 0 0 0.75rem;
+    font-size: 0.9rem;
+    color: var(--Body-text);
+}
+
+.modal-highlights {
+    margin: 0 0 1.15rem;
+    padding-left: 1.15rem;
+    display: grid;
+    gap: 0.38rem;
+    font-size: 0.86rem;
+    color: var(--Body-text);
+}
+
+.modal-highlights strong {
+    color: var(--Heading);
+}
+
+.modal-actions {
+    display: flex;
+    gap: 0.6rem;
+}
+
+/* Responsif */
+@media (max-width: 480px) {
+    .container {
+        padding: 0.75rem;
+        gap: 0.75rem;
+    }
+
+    .card {
+        padding: 0.95rem;
+    }
+
+    .app-header {
+        gap: 0.75rem;
+    }
+
+    .card.brand-logo {
+        width: 66px;
+        height: 66px;
+        border-radius: 14px;
+    }
+
+    .stats-row {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.5rem;
+    }
+
+    .stat-divider {
+        display: none;
+    }
+
+    .stat-item {
+        background: var(--Main-background);
+        border-radius: var(--radius);
+        padding: 0.5rem 0.4rem;
+    }
+
+    .rating-summary {
+        grid-template-columns: 84px minmax(0, 1fr);
+        gap: 0.65rem;
+    }
+
+    .rating-big {
+        font-size: 1.95rem;
+    }
+
+    .secondary-actions {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (min-width: 600px) {
+    .action-buttons {
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .btn-primary {
+        flex: 1.4;
+    }
+
+    .secondary-actions {
+        flex: 1;
+    }
+
+    .screenshot-item {
+        flex: 0 0 185px;
+    }
+}
